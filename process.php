@@ -1,14 +1,13 @@
 <?php    
 if(isset($_POST['SubmitButton'])){ //check if form was submitted
   $input = $_POST['myRange']; //get input text
-  $message = "Success! You entered: ".$input;
+  $message =$input*10;
 }    
 ?>
 
 <html>
 <head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 .slidecontainer {
@@ -50,39 +49,13 @@ if(isset($_POST['SubmitButton'])){ //check if form was submitted
 }
 </style>
 
-<script type="text/javascript">
-
-// jQuery plugin to prevent double submission of forms
-jQuery.fn.preventDoubleSubmission = function() {
-    
-  $(this).on('submit',function(e){
-    var $form = $(this);
-
-    if ($form.data('submitted') === true) {
-      // Previously submitted - don't submit again
-      e.preventDefault();
-    } else {
-      // Mark it so that the next submit can be ignored
-      $form.data('submitted', true);
-    }
-  });
-
-  // Keep chainability
-  return this;
-};
-
-$('#thisform').preventDoubleSubmission();
-
-
-</script>
-
 
 </head>
 <body>    
 
 <div class="""slidecontainer">
 
-<form action="" method="post" id ="thisform" name="thisform">
+<form action="" method="post">
 <?php echo $message; ?>
 <input type="range" min="1" max="10" value="50" class="slider" id="myRange" name="myRange">
   <input type="submit" name="SubmitButton"/>
