@@ -131,7 +131,7 @@
     <ul id="slide-out" class="sidenav">
       <li><div class="user-view">
         <div class="background">
-          <img src="office.jpg">
+          <img src="images/office.jpg">
         </div>
         <a href="#user"><img class="circle" src="yuna.jpg"></a>
         <a href="#name"><span class="white-text name">John Doe</span></a>
@@ -144,7 +144,20 @@
       <li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
     </ul>
     <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-
+<div>
+ <script>
+  (function() {
+    var cx = '018427458728593593842:yxpdlc3tiji';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search>
+</div>
       <div class="row">
       <div class="col s12 m6">
         <div class="card">
@@ -207,56 +220,6 @@
         <div class="card large">
           <div class="card-content" style="overflow:auto;" id='questions'>
             <span class="card-title">Student Questions</span>
-              <div class="row">
-         <div class="col">
-               <div class="card-panel z-depth-1" style="padding:8px;">
-                  <div class="row valign-wrapper">
-                    <div class="col s2">
-                        <img src="images/student.png" alt="" class="circle responsive-img" style="max-height: 32px;"><b> Taissa </b>
-                      </div>
-                    <div class="col s10">
-                        <span class="black-text">
-                        here exists a handful students who dare to venture the eerie roads the campus past midnight. While keeping all the lights switched on can prove to be an excessive waste of resources, leaving them switched off removes their purpose. Can you come up with an intelligent idea to light up the way?
-                        </span>
-                    </div>
-                  </div>
-              </div>
-            </div>
-      </div>
-       <div class="row">
-         <div class="col">
-               <div class="card-panel z-depth-1" style="padding:8px;">
-                  <div class="row valign-wrapper">
-                    <div class="col s2">
-                        <img src="images/student.png" alt="" class="circle responsive-img" style="max-height: 32px;"><b> Taissa </b>
-                      </div>
-                    <div class="col s10">
-                        <span class="black-text">
-                        here exists a handful students who dare to venture the eerie roads the campus past midnight. While keeping all the lights switched on can prove to be an excessive waste of resources, leaving them switched off removes their purpose. Can you come up with an intelligent idea to light up the way?
-                        </span>
-                    </div>
-                  </div>
-              </div>
-            </div>
-      </div>
-       
-                <div class="row">
-         <div class="col">
-               <div class="card-panel z-depth-1" style="padding:8px;">
-                  <div class="row valign-wrapper">
-                    <div class="col s2">
-                        <img src="taissa.jpg" alt="" class="circle responsive-img"><b> Taissa </b>
-                      </div>
-                    <div class="col s10">
-                      <div class="teal-text"> 3/5</div>
-                        <span class="black-text">
-                        It's good, but could have been scarier. Didnt get scared as such.
-                        </span>
-                    </div>
-                  </div>
-              </div>
-            </div>
-      </div>
           </div> 
          </div>
         </div>
@@ -545,7 +508,7 @@
   }
   function loadPosts(){
     $.ajax({
-      url: 'questions.txt',
+      url: 'new_questions.txt',
       success: function(data) {
         var lines = data.split('\n');
         var content="";
@@ -553,8 +516,10 @@ for(var i = 0;i < lines.length-1;i++){
   var index = lines[i].indexOf(' ');
   var name = lines[i].substring(0, index);
   var message = lines[i].substring(index+1);
-    $("#questions").append('<div class="row s12"><div class="col s12"><div class="card-panel z-depth-1" style="padding:8px;"><div class="row valign-wrapper"><div class="col s3" style="padding-left:0px;""><b>' + name+'</b></div><div class="col"><span class="black-text">'+message+'</span></div></div></div></div></div> ');
+    $("#questions").append('<div class="row s12"><div class="col s12"><div class="card-panel z-depth-1" style="padding:8px;"><div class="row valign-wrapper"><div class="col" style="margin-left:0px;""><b>' + name+'</b></div><div class="col"><span class="black-text">'+message+'</span></div></div></div></div></div> ');
 }
+if(lines.length > 1)
+$("#questions").scrollTop($("#questions")[0].scrollHeight);
  $.ajax({
         url: 'clear_questions.php',
         type: 'POST',           
@@ -563,6 +528,21 @@ for(var i = 0;i < lines.length-1;i++){
       }
     });
   }
+   $.ajax({
+      url: 'questions.txt',
+      success: function(data) {
+        var lines = data.split('\n');
+        var content="";
+for(var i = 0;i < lines.length-1;i++){
+  var index = lines[i].indexOf(' ');
+  var name = lines[i].substring(0, index);
+  var message = lines[i].substring(index+1);
+    $("#questions").append('<div class="row s12"><div class="col s12"><div class="card-panel z-depth-1" style="padding:8px;"><div class="row valign-wrapper"><div class="col" style="margin-left:0px;""><b>' + name+'</b></div><div class="col"><span class="black-text">'+message+'</span></div></div></div></div></div> ');
+}
+if(lines.length > 1)
+$("#questions").scrollTop($("#questions")[0].scrollHeight);
+ }
+    });
   $(function(){
     loadPosts();
   });
