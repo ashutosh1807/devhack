@@ -1,9 +1,10 @@
 Drop DATABASE devhack;
 drop table Student;
-
+create database devhack;
+\c devhack
 SET datestyle = dmy; 
 
-CREATE TABLE Student
+CREATE TABLE student
 (
   rollno CHAR(9) NOT NULL,
   password DATE,
