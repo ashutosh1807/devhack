@@ -131,7 +131,7 @@
     <ul id="slide-out" class="sidenav">
       <li><div class="user-view">
         <div class="background">
-          <img src="office.jpg">
+          <img src="images/office.jpg">
         </div>
         <a href="#user"><img class="circle" src="yuna.jpg"></a>
         <a href="#name"><span class="white-text name">John Doe</span></a>
@@ -144,7 +144,20 @@
       <li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
     </ul>
     <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-
+<div>
+ <script>
+  (function() {
+    var cx = '018427458728593593842:yxpdlc3tiji';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search>
+</div>
       <div class="row">
       <div class="col s12 m6">
         <div class="card">

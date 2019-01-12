@@ -15,7 +15,7 @@
     <ul id="slide-out" class="sidenav">
       <li><div class="user-view">
         <div class="background">
-          <img src="office.jpg">
+          <img src="images/office.jpg">
         </div>
         <a href="#user"><img class="circle" src="yuna.jpg"></a>
         <a href="#name"><span class="white-text name">John Doe</span></a>
@@ -82,7 +82,7 @@
         </div>
       </div>
     </div>
-    
+
         <!--JavaScript at end of body for optimized loading-->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
