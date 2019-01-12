@@ -43,51 +43,68 @@
   </script>
   <gcse:search></gcse:search>
   </div>
-        <div class="row">
-        <div class="col s12 m6">
-          <div class="card large">
-            <div class="card-content">
-              <span class="card-title">Live Lecture Transcript</span>
-              <p>I am a very simple card. I am good at containing small bits of information.
-              I am convenient because I require little markup to use effectively.</p>
-            </div>
-          </div>
-        </div>
-        <div class="col s12 m6">
-          <div class="card">
-            <div class="card-content">
-              <span class="card-title">Ask a Question?</span>
-              <div class="row">
-              <div class="input-field col s12">
-                <textarea id="submit_question" class="materialize-textarea" data-length="120"></textarea>
-                <label for="textarea2">Your Question Here</label>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col s6">
-                <div class="switch">
-        <label>
-          Submit Anonymously
-          <input type="checkbox" id="submit-anonymously">
-          <span class="lever"></span>
-        </label>
-      </div>
-              </div>
-              <div class="col s6"> 
-              <button class="btn waves-effect waves-light" type="submit" name="submit" id="submit">Submit
-        <i class="material-icons right">send</i>
-      </button>
-              </div>
-            </div> 
-           </div>
-          </div>
-        </div>
-      </div>
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <div id="chart_div"></div>
+   <div id="piechart" style="width: 900px; height: 500px;"></div>
+      
 
           <!--JavaScript at end of body for optimized loading-->
           <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
           <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
           <script type="text/javascript">
+            google.charts.load("current", {packages:["corechart"]});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Average Rating', 'Number of Lectures'],
+          ['< 1',     11],
+          ['< 2',      2],
+          ['< 3',  2],
+          ['< 4', 2],
+          ['< 5',    7]
+        ]);
+
+        var options = {
+          title: 'Lecture Feedback',
+          is3D: true,
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+        chart.draw(data, options);
+      }
+            google.charts.load('current', {packages: ['corechart', 'line']});
+google.charts.setOnLoadCallback(drawBasic);
+
+function drawBasic() {
+
+      var data = new google.visualization.DataTable();
+      data.addColumn('date', 'X');
+      data.addColumn('number', 'Students');
+
+      data.addRows([
+        [new Date("Wed Oct 18 2017 12:41"), 5],
+        [new Date("Wed Oct 19 2017 12:41"), 6],
+        [new Date("Wed Oct 20 2017 12:41"), 7],
+        [new Date("Wed Oct 21 2017 12:41"), 8],
+        [new Date("Wed Oct 22 2017 12:41"), 5],
+        [new Date("Wed Oct 23 2017 12:41"), 2],
+        [new Date("Wed Oct 24 2017 12:41"), 4]
+      ]);
+
+      var options = {
+        hAxis: {
+          title: 'Lecture Time'
+        },
+        vAxis: {
+          title: 'Number of Students attended'
+        },
+         pointSize: 20,
+      };
+
+      var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+
+      chart.draw(data, options);
+    }
              $(document).ready(function(){
         $('.sidenav').sidenav();
       });
