@@ -1,5 +1,6 @@
   <!DOCTYPE html>
     <html>
+    <?php session_start();?>
       <head>
         <!--Import Google Icon Font-->
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -67,7 +68,7 @@
               <div class="switch">
       <label>
         Submit Anonymously
-        <input type="checkbox">
+        <input type="checkbox" id="submit-anonymously">
         <span class="lever"></span>
       </label>
     </div>
@@ -92,11 +93,14 @@
     });
            $('#submit').click(function() {
             if($.trim($('#submit_question').val()).length>0){
+              var name = "Tom";
+              if($('#submit-anonymously').prop('checked'))
+                name = "Anonymous";
       $.ajax({
           url: 'submit_question.php',
           type: 'POST',
           data: {
-              name: 'Anonymous',
+              name: name,
               message: $('#submit_question').val()
           },
           success: function(msg) {
