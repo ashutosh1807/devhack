@@ -26,7 +26,7 @@
                     }
                 }               
             if($msg=='s'){
-                $_SESSION['user']=id;
+                $_SESSION['user']=$id;
                 echo json_encode(['code'=>100]);
             }
             else if($msg=='i'){

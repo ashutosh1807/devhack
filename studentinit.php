@@ -12,6 +12,7 @@
 
     <body>
     <?php  session_start();  ?>
+    
   <ul id="slide-out" class="sidenav">
       <li><div class="user-view">
         <div class="background">
@@ -34,6 +35,31 @@
       <div class="card large">
         <div class="card-content">
           <span class="card-title">Student</span>
+          
+
+<!-- Modal -->
+<a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a>
+
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <h4>Type Code</h4>
+      <div class="row">
+
+      <div class="input-field col s12">
+                          <input type="text" id="code" class="materialize-textarea" required >
+                          <label for="user">Code</label>
+                      </div>
+      </div>
+      
+    </div>
+    <div class="modal-footer">
+      <button class=" waves-effect waves-green btn-flat" onclick="submit()">Continue</a>
+    </div>
+  </div>
+
+<!-- Modal -->
+
         </div>
       </div>
     </div>
@@ -44,8 +70,31 @@
       <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
       <script type="text/javascript">
          $(document).ready(function(){
-    $('.sidenav').sidenav();
-  });
+          $('.sidenav').sidenav();
+          $(".modal").modal();
+        });
+        function submit(){
+          $.ajax({
+                      url: 'codecheck.php',
+                      type: 'POST',
+                      dataType: "json",
+                      data: {
+                          message: document.getElementById('code').value
+                      },
+                      success : function(data){
+                        if (data.code == "100"){
+                          window.location.href="user.php";
+                        }
+                        else if(data.code=="200"){
+                          alert("wrong code")
+                        }
+                        else if(data.code=="400"){
+                          alert("No attendance")
+                        }
+                      }            
+                  });
+
+        }
         
       </script>
     </body>
