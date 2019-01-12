@@ -50,7 +50,7 @@
 				var form = $("#login")
 				//alert()
 				if (form[0].checkValidity() === false) {
-					form.reportValidity();
+					form[0].reportValidity();
 				}
 				else{
 					document.getElementById('error').innerHTML='';
