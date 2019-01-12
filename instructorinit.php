@@ -34,6 +34,11 @@
       <div class="card large">
         <div class="card-content">
           <span class="card-title">Instructor</span>
+          <button class="nav-link" onclick="Gencode()">Generate Code</button>
+          <p id="code"></p>
+          <button class="nav-link" onclick="timer()">Start timer</button>
+          <p id="demo"></p>
+
         </div>
       </div>
     </div>
@@ -44,9 +49,46 @@
       <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
       <script type="text/javascript">
          $(document).ready(function(){
-    $('.sidenav').sidenav();
-  });
-        
+            $('.sidenav').sidenav();
+          });
+        function Gencode(){
+            document.getElementById('code').innerHTML=Math.floor(1000 + Math.random() * 9000);
+            $.ajax({
+                url: 'code.php',
+                type: 'POST',
+                data: {
+                    message: document.getElementById('code').innerHTML
+                },            
+            });
+        }
+        function timer(){
+          var today = new Date();
+          var newDateObj = new Date(today.getTime()+ 3*6000);
+
+          var x = setInterval(function() {
+          var now = new Date().getTime();
+            var distance = newDateObj - now;
+            
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            if(seconds%10==0){
+              Gencode();
+            }
+            document.getElementById("demo").innerHTML =  seconds + "s ";
+
+            if (distance < 0) {
+              clearInterval(x);
+              document.getElementById("demo").innerHTML = "EXPIRED";
+              $.ajax({
+                url: 'code.php',
+                success: function(){
+                  window.location.href="instructor.php";
+                }
+
+            });
+              
+            }
+          }, 1000);
+        }
       </script>
     </body>
   </html>
