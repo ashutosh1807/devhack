@@ -18,26 +18,27 @@
               <div class="card-content">
                   <span class="card-title">Login</span>
                   <form  id="login" action="">
-                  <div class="row">
+                    <div class="row">
+                      <div class="input-field col s12">
+                          <input type="text" id="user" class="materialize-textarea" required >
+                          <label for="user">User</label>
+                      </div>
+                      <div class="input-field col s12">
+                          <input type="password" id="pass" required  class="materialize-textarea" >
+                          <label for="pass">Password</label>
+                      </div>
+                    </div>
+                    <div class="row" id="error">
+                    </div>
+                    </form>
+                    <div class="row">
+                      <div class="col s6"> 
+                        <button class="btn waves-effect waves-light" id ="loginbtn" type="submit" name="action">Login
+                        <i class="material-icons right">send</i>
+                        </button>
+                      </div>
+                    </div>
                   
-                  
-                    <div class="input-field col s12">
-                        <input id="user" class="materialize-textarea" required >
-                        <label for="user">User</label>
-                    </div>
-                    <div class="input-field col s12">
-                        <input type="password" id="pass"required  class="materialize-textarea" >
-                        <label for="pass">Password</label>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col s6"> 
-                      <button class="btn waves-effect waves-light" id ="loginbtn" type="submit" name="action">Login
-                      <i class="material-icons right">send</i>
-                      </button>
-                    </div>
-                  </div>
-                  </form>
               </div>
             </div>
         </div>
@@ -52,8 +53,7 @@
 					form.reportValidity();
 				}
 				else{
-          alert('pp');
-					//document.getElementById('emailerror').innerHTML='';
+					document.getElementById('error').innerHTML='';
 					var uname = $("#user").val();
 					var pass = $("#pass").val();
 					$.ajax({
@@ -63,14 +63,14 @@
 						data: {user:uname,pass:pass},
 						success : function(data){
 							if (data.code == "100"){
-								document.getElementById('registered').innerHTML="You are registered.You can login now.";
-								document.getElementById('loginbuttn').style="display:block";
-								document.getElementById('btnsignup').style="display:none";
-
+                window.location.href="studentinit.php";
 							}
 							else if(data.code=="200"){
-								document.getElementById('usererror').innerHTML="Invalid credentials";
+                window.location.href="instructorinit.php";
 							}
+              else if(data.code=="300"){
+                document.getElementById('error').innerHTML='Invalid Credentials';
+              }
 						}
 					});
 				}
