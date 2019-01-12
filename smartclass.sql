@@ -16,5 +16,5 @@ CREATE TABLE student
   PRIMARY KEY (userid)
 );
 
-INSERT into Student values('160020020','18/08/1997','Ashutosh agarwal',true);
+INSERT into Student values('160020020','123456','Ashutosh agarwal',true);
 INSERT into student values('phawade','123456','R Phawade',false);
