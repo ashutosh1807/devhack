@@ -1,13 +1,15 @@
   <!DOCTYPE html>
   <html>
   <head>
+  <title> Live Session</title>
     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!--Import materialize.css-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
     <!--Let browser know website is optimized for mobile-->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="viewport" content="width=device-width, user-scalable=no" />
+      <link rel="manifest" href="manifest.json" />
     <style>
     * {
       font-family: Verdana, Arial, sans-serif;
@@ -127,7 +129,10 @@
 </head>
 
 <body>
+<?php  session_start(); 
 
+
+?>
   <ul id="slide-out" class="sidenav">
     <li><div class="user-view">
       <div class="background">
@@ -142,6 +147,7 @@
     <li><div class="divider"></div></li>
     <li><a class="subheader">Subheader</a></li>
     <li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
+    <li><a class="waves-effect" onclick="logout()" href="#lectures">Logout</a></li>
   </ul>
   <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
   <div>
@@ -225,6 +231,17 @@
           </div>
         </div>
       </div>
+
+      <div>
+        Upload a file
+        <form action="upload.php" method="post" enctype="multipart/form-data">
+          <!-- Select image to upload: -->
+          <input type="file" name="fileToUpload" id="fileToUpload">
+          <input type="submit" class="btn btn-sm btn-primary"  value="Upload File" name="submit">
+        </form>
+      </div>
+      <div>
+
       <!--JavaScript at end of body for optimized loading-->
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
@@ -415,7 +432,10 @@
     };
   }
 
-
+  function logout(){
+          <?php session_destroy();?>
+          window.location.href="index.php";
+        }
   function upgrade() {
     start_button.style.visibility = 'hidden';
     showInfo('info_upgrade');
@@ -516,7 +536,7 @@
           var index = lines[i].indexOf(' ');
           var name = lines[i].substring(0, index);
           var message = lines[i].substring(index+1);
-          $("#questions").append('<div class="row s12"><div class="col s12"><div class="card-panel z-depth-1" style="padding:8px;"><div class="row valign-wrapper"><div class="col" style="margin-left:0px;""><b>' + name+'</b></div><div class="col"><span class="black-text">'+message+'</span></div></div></div></div></div> ');
+          $("#questions").append('<div class="row s12" style="margin-bottom:0px"><div class="col s12"><div class="card-panel light-blue lighten-4" style="padding:8px;"><div class="row valign-wrapper"><div class="col" style="margin-left:0px;""><b>' + name+'</b></div><div class="col"><span class="black-text">'+message+'</span></div></div></div></div></div> ');
         }
         if(lines.length > 1)
           $("#questions").scrollTop($("#questions")[0].scrollHeight);
@@ -537,7 +557,7 @@
         var index = lines[i].indexOf(' ');
         var name = lines[i].substring(0, index);
         var message = lines[i].substring(index+1);
-        $("#questions").append('<div class="row s12"><div class="col s12"><div class="card-panel z-depth-1" style="padding:8px;"><div class="row valign-wrapper"><div class="col" style="margin-left:0px;""><b>' + name+'</b></div><div class="col"><span class="black-text">'+message+'</span></div></div></div></div></div> ');
+        $("#questions").append('<div class="row s12" style="margin-bottom:0px"><div class="col s12"><div class="card-panel light-blue lighten-4" style="padding:8px;"><div class="row valign-wrapper"><div class="col" style="margin-left:0px;""><b>' + name+'</b></div><div class="col"><span class="black-text">'+message+'</span></div></div></div></div></div> ');
       }
       if(lines.length > 1)
         $("#questions").scrollTop($("#questions")[0].scrollHeight);

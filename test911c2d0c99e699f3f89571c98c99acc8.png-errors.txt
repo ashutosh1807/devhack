@@ -1,0 +1,8 @@
+2019-01-13 00:46:46: <br />
+<b>Warning</b>:  file_put_contents(/Applications/XAMPP/xamppfiles/htdocs/devhack/cache/mask_1/mask_21_1.dat): failed to open stream: Permission denied in <b>/Applications/XAMPP/xamppfiles/htdocs/devhack/qrmask.php</b> on line <b>155</b><br />
+<br />
+<b>Warning</b>:  file_put_contents(/Applications/XAMPP/xamppfiles/htdocs/devhack/cache/mask_2/mask_21_2.dat): failed to open stream: Permission denied in <b>/Applications/XAMPP/xamppfiles/htdocs/devhack/qrmask.php</b> on line <b>155</b><br />
+<br />
+<b>Warning</b>:  file_put_contents(/Applications/XAMPP/xamppfiles/htdocs/devhack/cache/mask_3/mask_21_3.dat): failed to open stream: Permission denied in <b>/Applications/XAMPP/xamppfiles/htdocs/devhack/qrmask.php</b> on line <b>155</b><br />
+<br />
+<b>Warning</b>:  file_put_contents(/Applications/XAMPP/xamppfiles/htdocs/devhack/cache/mask_5/mask_21_5.dat): failed to open stream: Permission denied in <b>/Applications/XAMPP/xamppfiles/htdocs/devhack/qrmask.php</b> on line <b>155</b><br />

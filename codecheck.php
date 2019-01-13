@@ -14,16 +14,16 @@ catch(PDOException $e)
     $errorMSG .= "<li>There was some error fetching results from database.</li>";
     echo json_encode(['code'=>404, 'msg'=>$errorMSG]);
 }
-if (!file_exists("code.txt")){
+if (file_get_contents("code.txt")==''){
     echo json_encode(['code'=>400]);
 }
 else{
-    $myfile = fopen("code.txt", "a+");
+   // echo 'hello';
     $txt = $_POST['message'];
     $code=file_get_contents("code.txt");
     if ($code==$txt){
         if(empty($errorMSG)){
-            $stmt = $conn->prepare("Insert into attendance values(:id,timestamp)");
+            $stmt = $conn->prepare("Insert into attendance values(:id,now()::date,now()::time)");
             $stmt->execute([ ':id' => $_SESSION['user']]);
             $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
         }
